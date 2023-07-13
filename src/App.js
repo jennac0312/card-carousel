@@ -8,6 +8,7 @@ import symbols from './models/symbols';
 // hooks
 import { useState } from 'react';
 
+console.log(cardImages)
 
 
 function App() {
@@ -19,20 +20,31 @@ function App() {
 
   // function to change state (right arrow button)
   const changeCount = () => {
-    console.log(count)
-
-    // setVariableFunction(new value to update var to)
-    setCount(count + 1)
+    // loop back to first pic
+    if(count >= (cardImages.length-1) ){
+      setCount(0)
+    } else{
+      // setVariableFunction(new value to update var to)
+      setCount(count + 1)
+    }
+    console.log('right count is now at', count+1)
 
 
   }
 
   // function for left arrow
   const reverseCount = () => {
-    console.log(count)
-
-    // setVariableFunction(new value to update var to)
-    setCount(count - 1)
+    // console.log(typeof count)
+    
+    if(count === 0 ){
+      // loop back to last pic
+      // setCount(3)
+      setCount(cardImages.length-1)
+    } else{
+      setCount(count - 1)
+      // setVariableFunction(new value to update var to)
+    }
+    console.log('left count is now at', count)
   }
 
 
