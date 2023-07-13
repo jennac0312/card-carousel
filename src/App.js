@@ -1,23 +1,48 @@
-import logo from './logo.svg';
 import './App.css';
+// components
+import Button from './components/Button'
+import Card from './components/Card'
+// models
+import cardImages from './models/cardImages';
+import symbols from './models/symbols';
+// hooks
+import { useState } from 'react';
+
+
 
 function App() {
+  // 1. desctructure state
+  // const [var, setVariableFunction] = useState(initial value)
+  const [count, setCount] = useState(0) 
+  const [currentPic, setCurrentPic] = useState(cardImages[0])
+
+
+  // function to change state (right arrow button)
+  const changeCount = () => {
+    console.log(count)
+
+    // setVariableFunction(new value to update var to)
+    setCount(count + 1)
+
+
+  }
+
+  // function for left arrow
+  const reverseCount = () => {
+    console.log(count)
+
+    // setVariableFunction(new value to update var to)
+    setCount(count - 1)
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+      <Card currentCount={count} images={cardImages}/>
+      <Button symbol={symbols.left} changePic={reverseCount}/>
+      <Button symbol={symbols.right} changePic={changeCount}/>
+
     </div>
   );
 }
