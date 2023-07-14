@@ -1,6 +1,6 @@
 import './App.css';
 // components
-import Button from './components/Button'
+import Button from './components/Button' // "react elements" when used
 import Card from './components/Card'
 // models
 import cardImages from './models/cardImages';
@@ -15,7 +15,7 @@ function App() {
   // 1. desctructure state
   // const [var, setVariableFunction] = useState(initial value)
   const [count, setCount] = useState(0) 
-  const [currentPic, setCurrentPic] = useState(cardImages[0])
+  // const [currentPic, setCurrentPic] = useState(cardImages[0])
 
 
   // function to change state (right arrow button)
@@ -28,14 +28,11 @@ function App() {
       setCount(count + 1)
     }
     console.log('right count is now at', count+1)
-
-
   }
 
   // function for left arrow
   const reverseCount = () => {
     // console.log(typeof count)
-    
     if(count === 0 ){
       // loop back to last pic
       // setCount(3)
@@ -52,7 +49,7 @@ function App() {
     <div className="App">
       
       <Card currentCount={count} images={cardImages}/>
-      <Button symbol={symbols.left} changePic={reverseCount}/>
+      <Button symbol={symbols.left} changePic={reverseCount}/> {/** becomes props here */}
       <Button symbol={symbols.right} changePic={changeCount}/>
 
     </div>
